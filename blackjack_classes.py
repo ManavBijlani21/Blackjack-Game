@@ -59,3 +59,16 @@ class Player:
         while self.aces>0 and self.value>21:
             self.value-=10
             self.aces-=1
+
+#Chips class
+#This class alters the chips of each player
+class Chips:
+    
+    def __init__(self,total_chips=100):
+        self.total_chips=total_chips
+    
+    def win_bet(self,bet):
+        self.total_chips+=bet
+    
+    def loose_bet(self,bet):
+        self.total_chips-=bet
