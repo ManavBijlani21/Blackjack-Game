@@ -38,3 +38,24 @@ class Deck:
     #Removing a card from the deck
     def deal_card(self):
         return self.game_deck.pop()
+
+#Player class
+class Player:
+    
+    def __init__(self):
+        self.hand=[]
+        self.value=0
+        self.aces=0
+
+    #Function to add a card to the player's deck
+    def add_card(self,card):
+        self.hand.append(card)
+        self.value+=card.number
+        #Adjusting the number of aces
+        if card.rank=='ace':
+            self.aces+=1
+    #This function checks whether to keep the value of ace as 1 or 11
+    def value_of_ace(self):
+        while self.aces>0 and self.value>21:
+            self.value-=10
+            self.aces-=1
