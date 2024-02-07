@@ -8,10 +8,11 @@ suits=['clubs','hearts','diamonds','spades']
 ranks=['two','three','four','five','six','seven','eight','nine','ten','jack','queen','king','ace']
 values={'two':2,'three':3,'four':4,'five':5,'six':6,'seven':7,'eight':8,'nine':9,'ten':10,'jack':11,'queen':11,
        'king':11,'ace':11}
-
+chips_check="N"
 
 while True:
     print("Welcome to the BlackJack Game!")
+
     #Initializing the deck
     BlackJack_deck=blackjack_classes.Deck()
     #Shuffling the deck
@@ -20,9 +21,14 @@ while True:
     player=blackjack_classes.Player()
     dealer=blackjack_classes.Player()
     #Initializing chips for the player
-    player_chips=blackjack_classes.Chips() 
+    if chips_check=="N":
+        player_chips=blackjack_classes.Chips() 
+    else:
+        print("Remaining chips of the player: ",player_chips.total_chips)
     #Taking the bet to be made by the player
     player_bet=blackjack_functions.take_bet(player_chips)
+
+
     #Distributing two cards to each of them
     for i in range(2):
         player.add_card(BlackJack_deck.deal_card())
@@ -37,6 +43,7 @@ while True:
         #Asking player whether he wants to hit or stand
         playing=blackjack_functions.hit_or_stand(player,BlackJack_deck)
         blackjack_functions.show_some(player,dealer)
+
         if blackjack_functions.player_busts(player,player_chips,player_bet):
             print("The player busts!")
             print("Dealer Wins!!!")
@@ -59,6 +66,7 @@ while True:
     if flag=='green':
         while dealer.value<17:
             blackjack_functions.hit(dealer,BlackJack_deck)
+
         if blackjack_functions.dealer_busts(dealer,player_chips,player_bet):
             print("The dealer busted!!")
             print("Congratulations the player wins the game!!!")
@@ -72,15 +80,21 @@ while True:
             print("The game is tied...")
         else:
             pass
+
         #Showing all cards of dealer and player
         blackjack_functions.show_all(player,dealer)
     
     print("Remaining chips of the player:",player_chips.total_chips)
+
     #Asking the player whether to continue playing or not
     play_on=blackjack_functions.continue_playing()
     if play_on==False:
         print("\n")
         break
+    #Checking if the player wants to continue with same chips
+    else:
+        chips_check=input("Do you want to continue with the same chips(Y/N)?")
+
     print("-"*50)
     print("\n")
 

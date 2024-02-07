@@ -21,6 +21,10 @@ def take_bet(player_chips):
             if bet>player_chips.total_chips:
                 print('The bet should not exceed the total chips you have!')
                 continue
+            
+            elif bet<0:
+                print("The bet cannot be negative")
+                
             else:
                 break
         finally:

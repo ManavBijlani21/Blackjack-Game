@@ -32,9 +32,11 @@ class Deck:
         for card in self.game_deck:
             my_deck+='\n'+str(card)
         return my_deck
+
     #Shuffling the deck
     def shuffle_deck(self):
         shuffle(self.game_deck)
+
     #Removing a card from the deck
     def deal_card(self):
         return self.game_deck.pop()
@@ -54,6 +56,7 @@ class Player:
         #Adjusting the number of aces
         if card.rank=='ace':
             self.aces+=1
+            
     #This function checks whether to keep the value of ace as 1 or 11
     def value_of_ace(self):
         while self.aces>0 and self.value>21:
