@@ -26,3 +26,23 @@ def take_bet(player_chips):
         finally:
             print('Thank you!')
     return bet
+
+
+#Function to add a card to the player's deck
+def hit(player,deck):
+    player.add_card(deck.deal_card())
+    player.value_of_ace()
+
+#Function to take the input of choice (hit or stand)
+def hit_or_stand(player,deck):
+    global playing
+    choice=False
+    while choice not in ['hit','stand']:
+        choice=input("Do you want to hit or stand?")
+        if choice not in ['hit','stand']:
+            print("Please type either 'hit' or 'stand':")
+    
+    if choice=='hit':
+        hit(player,deck)
+    else:
+        playing=False
