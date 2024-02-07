@@ -47,3 +47,26 @@ while True:
             show_all(player,dealer)
         else:
             flag='green'
+
+    
+    #Checking all the winning scenarios if player hasn't busted
+    if flag=='green':
+        while dealer.value<17:
+            hit(dealer,BlackJack_deck)
+        #Showing all cards of dealer and player
+        show_all(player,dealer)
+        if dealer_busts(dealer,player_chips,player_bet):
+            print("The dealer busted!!")
+            print("Congratulations the player wins the game!!!")
+        elif player_wins(player,dealer,player_chips,player_bet):
+            print("Congratulations the player wins the game!!!")
+            print("The dealer looses..")
+        elif dealer_wins(player,dealer,player_chips,player_bet):
+            print("Dealer wins the game!!!")
+            print("Player looses the bet")
+        elif tie(player,dealer):
+            print("The game is tied...")
+        else:
+            pass
+
+    
