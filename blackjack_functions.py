@@ -105,3 +105,17 @@ def tie(player,dealer):
         return True
     else:
         return False
+
+
+#Function for asking the player if he wants to continue playing
+def continue_playing():
+    to_continue=False
+    while to_continue not in ['Yes','No']:
+        to_continue=input("Do you want to continue playing(Yes/No)?")
+        if to_continue not in ['Yes','No']:
+            print("Please enter a valid choice!")
+    
+    if to_continue=='Yes':
+        return True
+    else:
+        return False
