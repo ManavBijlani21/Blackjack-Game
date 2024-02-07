@@ -32,3 +32,18 @@ while True:
     show_some(player,dealer)
     playing=True
     flag='green'
+
+    while playing:
+        #Asking player whether he wants to hit or stand
+        hit_or_stand(player,BlackJack_deck)
+        show_some(player,dealer)
+        if player_busts(player,player_chips,player_bet):
+            print("The player busts!")
+            print("Dealer Wins!!!")
+            print("Player looses the bet")
+            playing=False
+            flag='red'
+            #Showing all cards of dealer and player
+            show_all(player,dealer)
+        else:
+            flag='green'
