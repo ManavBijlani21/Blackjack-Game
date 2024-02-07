@@ -24,7 +24,7 @@ def take_bet(player_chips):
             else:
                 break
         finally:
-            print('Thank you!')
+            pass
     return bet
 
 
@@ -32,6 +32,7 @@ def take_bet(player_chips):
 def hit(player,deck):
     player.add_card(deck.deal_card())
     player.value_of_ace()
+    return True
 
 #Function to take the input of choice (hit or stand)
 def hit_or_stand(player,deck):
@@ -45,7 +46,8 @@ def hit_or_stand(player,deck):
     if choice=='hit':
         hit(player,deck)
     else:
-        playing=False
+        return False
+        
 
 
 #This function shows two cards of the player and only 1 card of the dealer
@@ -75,7 +77,6 @@ def show_all(player,dealer):
 def player_busts(player,player_chips,bet):
     if player.value>21:
         player_chips.loose_bet(bet)
-        print('Hello')
         return True
     else:
         return False
@@ -116,6 +117,7 @@ def continue_playing():
             print("Please enter a valid choice!")
     
     if to_continue=='Yes':
+        print("\n")
         return True
     else:
         return False
