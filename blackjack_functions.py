@@ -60,6 +60,8 @@ def show_some(player,dealer):
     print('\n')
     print("Dealer's Card:") 
     print(dealer.hand[0])
+
+
 #This function shows all the cards of player and dealer
 def show_all(player,dealer):
     show_some(player,dealer)
@@ -67,3 +69,39 @@ def show_all(player,dealer):
         print(dealer.hand[j])
     print('Total:',dealer.value)
     print('\n')
+
+
+#Checking all the winning scenarios 
+def player_busts(player,player_chips,bet):
+    if player.value>21:
+        player_chips.loose_bet(bet)
+        print('Hello')
+        return True
+    else:
+        return False
+
+def dealer_busts(dealer,player_chips,bet):
+    if dealer.value>21:
+        player_chips.win_bet(bet)
+        return True
+    else:
+        return False
+
+def player_wins(player,dealer,player_chips,bet):
+    if player.value<=21 and player.value>dealer.value:
+        player_chips.win_bet(bet)
+        return True
+    else:
+        return False
+def dealer_wins(player,dealer,player_chips,bet):
+    if dealer.value<=21 and dealer.value>player.value:
+        player_chips.loose_bet(bet)
+        return True
+    else:
+        return False
+    
+def tie(player,dealer):
+    if player.value==dealer.value:
+        return True
+    else:
+        return False
