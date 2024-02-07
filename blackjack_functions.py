@@ -46,3 +46,24 @@ def hit_or_stand(player,deck):
         hit(player,deck)
     else:
         playing=False
+
+
+#This function shows two cards of the player and only 1 card of the dealer
+def show_some(player,dealer):
+    #Player's cards
+    print('\n')
+    print("Player's Cards:")
+    for i in player.hand:
+        print(i)
+    print('Total:',player.value)
+    #Showing only one card of the dealer
+    print('\n')
+    print("Dealer's Card:") 
+    print(dealer.hand[0])
+#This function shows all the cards of player and dealer
+def show_all(player,dealer):
+    show_some(player,dealer)
+    for j in range(1,len(dealer.hand)):
+        print(dealer.hand[j])
+    print('Total:',dealer.value)
+    print('\n')
