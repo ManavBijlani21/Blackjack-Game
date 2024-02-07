@@ -68,5 +68,14 @@ while True:
             print("The game is tied...")
         else:
             pass
+    
+    print("Remaining chips of the player:",player_chips.total_chips)
+    #Asking the player whether to continue playing or not
+    play_on=continue_playing()
+    if play_on==False:
+        break
+
+print("Thanks for playing!")
+print("Hope you enjoyed the game!") 
 
     
