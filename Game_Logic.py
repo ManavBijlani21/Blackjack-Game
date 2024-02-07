@@ -41,6 +41,7 @@ while True:
 
     while playing:
         #Asking player whether he wants to hit or stand
+        print("\n")
         playing=blackjack_functions.hit_or_stand(player,BlackJack_deck)
 
         if blackjack_functions.player_busts(player,player_chips,player_bet):
